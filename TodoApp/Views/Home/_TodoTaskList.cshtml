@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TodoTask>
+
+
+<div id="partialtasklist">
+
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+
+    <div class="col-md-1 col-md-8 col-md-2">
+        <table class="table table-striped container">
+            @foreach (var task in Model)
+            {
+
+                <tr>
+                    <td>
+                        <input type="checkbox" asp-for="@task.Status" id="@task.Id" class="tdlCheckBox" method="post" action="/Home/CheckBoxAction" />
+                    </td>
+                    <td id="description @task.Id">
+                        @if (@task.Status == true)
+                        {
+                            <del>
+                                @task.Description
+                            </del>
+                        }
+                        else
+                        {
+                            @task.Description
+                        }
+                    </td>
+                    <td>
+
+                        <a class="btn btn-link tdlRemoveBtn" asp-action="Delete" asp-route-todoTaskId="@task.Id" method="post" data-tdl-target="#partialtasklist">
+                            Remove
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+</div>
+

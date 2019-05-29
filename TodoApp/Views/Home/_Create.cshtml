@@ -1,0 +1,19 @@
+﻿@model TodoTaskViewModel
+
+<form method="post" asp-action="Create" data-tdl-ajax="true" data-tdl-target="#partialtasklist">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <div class="input-group">
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+            <span class="input-group-btn">
+                <button type="submit" class="btn  btn-primary">
+                    Add
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+
+
